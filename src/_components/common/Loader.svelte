@@ -1,6 +1,6 @@
 <script>
   import { LoaderIcon } from 'svelte-feather-icons'
-  import Icon from './Icon.svelte'
+  import Icon from './common/Icon.svelte'
 </script>
 
 <style>

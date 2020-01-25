@@ -20,4 +20,3 @@
 >
   <svelte:component this={icon} />
 </i>
-
