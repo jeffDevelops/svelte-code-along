@@ -41,17 +41,10 @@
   textarea:active {
     border-color: var(--primary-color);
   }
-  input[type="radio"] {
-    margin: 0 10px 0 0;
-    cursor: pointer;
-  }
-  p {
-    margin: 10px 0;
-  }
 </style>
 
 <Modal
-  title="Create  a Svelte Fact"
+  title="Create  a Svelte Con"
   actionIcons={[
     {
       icon: XCircleIcon,
@@ -93,19 +86,5 @@
           placeholder="My Svelte Fact"
         />
       </fieldset>
-
-      <fieldset>
-        <p>Is this Svelte fact good or bad?</p>
-        <FlexRow height="20px" justifyContent="flex-start">
-          <input bind:value={type} id="PRO" name="type" type="radio" value="PRO">
-          <label name="type" for="PRO">Pro</label>
-        </FlexRow>
-        
-        <FlexRow height="20px" justifyContent="flex-start">
-          <input bind:value={type} id="CON" name="type" type="radio" value="CON">
-          <label name="type" for="CON">Con</label>
-        </FlexRow>
-      </fieldset>
-      
     </form>
   </Modal>

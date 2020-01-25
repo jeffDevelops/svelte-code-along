@@ -1,4 +1,5 @@
 <script>
+  import { slot } from 'svelte'
   export let justifyContent = 'center'
   export let alignItems = 'center'
   export let height = 'auto'

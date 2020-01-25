@@ -1,8 +1,11 @@
 <script>
 	import { onMount } from 'svelte'
+	import Card from './_components/common/Card.svelte'
+	import FlexRow from './_components/utility/FlexRow.svelte'
 	import Widget from './_components/Widget.svelte'
 	import GridArea from './_components/utility/GridArea.svelte'
-	import CreateSvelteFactModal from './_components/CreateSvelteFactModal.svelte'
+	import CreateSvelteProModal from './_components/CreateSvelteProModal.svelte'
+	import CreateSvelteConModal from './_components/CreateSvelteConModal.svelte'
 	import { sveltePros } from './_stores/sveltePros.js'
 	import { svelteCons } from './_stores/svelteCons.js'
 	import { PlusIcon, RefreshCwIcon } from 'svelte-feather-icons'
@@ -17,7 +20,8 @@
 	const fetchPros = async () => sveltePros.set(await fetchSvelteFacts({ type: 'PRO' }))
 	const fetchCons = async () => svelteCons.set(await fetchSvelteFacts({ type: 'CON' }))
 
-	let shouldDisplayCreateSvelteFactModal = false
+	let shouldDisplayCreateSvelteProModal = false
+	let shouldDisplayCreateSvelteConModal = false
 
 </script>
 
@@ -28,19 +32,42 @@
 		padding: var(--uniform-padding);
 		display: grid;
 		grid-gap: 25px;
-		grid-template-areas: 'pros cons';
-		grid-template-rows: minmax(0, auto);
+		grid-template-areas: 
+			'title title'
+			'pros cons';
+		grid-template-rows: minmax(0, 100px) minmax(0, calc(100vh - 100px));
 		grid-template-columns: 1fr 1fr;
+	}
+	img {
+		height: 250px;
+		display: inline-block;
 	}
 </style>
 
 <main>
 
-	{#if shouldDisplayCreateSvelteFactModal}
-		<CreateSvelteFactModal
-			emitCloseAction={() => shouldDisplayCreateSvelteFactModal = false}
+	{#if shouldDisplayCreateSvelteProModal}
+		<CreateSvelteProModal
+			emitCloseAction={() => shouldDisplayCreateSvelteProModal = false}
 		/>
   {/if}
+
+	{#if shouldDisplayCreateSvelteConModal}
+		<CreateSvelteConModal
+			emitCloseAction={() => shouldDisplayCreateSvelteConModal = false}
+		/>
+  {/if}
+
+	<GridArea gridArea="title">
+		<Card>
+			<FlexRow margin="-150px 0 0 0" height="400px" alignItems="center" justifyContent="center">
+				<img
+					src={"assets/svelte-logo.svg"}
+					alt="Svelte Logo"
+				/>
+			</FlexRow>
+		</Card>
+	</GridArea>
 
 	<GridArea gridArea="pros">
 		<Widget
@@ -48,7 +75,7 @@
 			actionIcons={[
 				{
 					icon: PlusIcon,
-					action: e => shouldDisplayCreateSvelteFactModal = true,
+					action: e => shouldDisplayCreateSvelteProModal = true,
 					color: 'var(--primary-color)',
 				},
 				{
@@ -70,7 +97,7 @@
 			actionIcons={[
 				{
 					icon: PlusIcon,
-					action: e => shouldDisplayCreateSvelteFactModal = true,
+					action: e => shouldDisplayCreateSvelteConModal = true,
 					color: 'var(--primary-color)',
 				},
 				{

@@ -2,6 +2,7 @@
   import ListView from './ListView.svelte'
   import Icon from './common/Icon.svelte'
   import ActionButton from './common/ActionButton.svelte'
+  import Card from './common/Card.svelte'
 
   export let title = '${YOUR TITLE HERE}'
   export let actionIcons = []
@@ -12,15 +13,8 @@
 </script>
 
 <style>
-  section {
-    box-shadow: var(--box-shadow-centered);
-    border-radius: var(--border-radius);
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-color: var(--plain-color);
-  }
   header {
+    height: 50px;
     padding: var(--uniform-padding);
     width: 100%;
     font-weight: 500;
@@ -29,6 +23,10 @@
     border-bottom: 1px solid var(--gray1-color);
     display: flex;
     justify-content: space-between;
+  }
+  section {
+    height: calc(100% - 50px);
+    overflow: scroll;
   }
   footer {
     border-top: 1px solid var(--gray1-color);
@@ -39,7 +37,7 @@
   }
 </style>
 
-<section>
+<Card>
   <header>
     { title }
     <span>
@@ -53,6 +51,7 @@
       {/each}
     </span>
   </header>
+  <section>
   {#if kind === 'LIST_VIEW'}
     <ListView
       removable={false}
@@ -61,6 +60,7 @@
   {:else}
     <slot>{ content }</slot>
   {/if}
+  </section>
   {#if Array.isArray(footerActions) && footerActions.length > 0}
     <footer>
       {#each footerActions as button, index}
@@ -74,4 +74,4 @@
       {/each}
     </footer>
   {/if}
-</section>
+</Card>
