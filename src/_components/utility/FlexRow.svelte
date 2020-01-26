@@ -1,5 +1,4 @@
 <script>
-  import { slot } from 'svelte'
   export let justifyContent = 'center'
   export let alignItems = 'center'
   export let height = 'auto'
@@ -8,14 +7,15 @@
   export let padding = '0'
 </script>
 
-<div style={`
-  margin: ${margin};
-  padding: ${padding};
-  height: ${height};
-  width: ${width};
-  display: flex;
-  justify-content: ${justifyContent};
-  align-items: ${alignItems};
-`}>
+<div
+  style={`
+    margin: ${margin};
+    padding: ${padding};
+    height: ${height};
+    width: ${width};
+    display: flex;
+    justify-content: ${justifyContent};
+    align-items: ${alignItems};
+  `}>
   <slot />
 </div>

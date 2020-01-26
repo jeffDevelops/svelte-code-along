@@ -2,7 +2,7 @@
   import Modal from './common/Modal.svelte'
   import FlexRow from './utility/FlexRow.svelte'
   import { XCircleIcon } from 'svelte-feather-icons'
-  import createSvelteFact from '../net/createSvelteFact'
+  import createSvelteFact from '../http/createSvelteFact'
 
   export let emitCloseAction
   

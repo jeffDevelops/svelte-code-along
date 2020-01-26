@@ -9,7 +9,7 @@
 	import { sveltePros } from './_stores/sveltePros.js'
 	import { svelteCons } from './_stores/svelteCons.js'
 	import { PlusIcon, RefreshCwIcon } from 'svelte-feather-icons'
-	import fetchSvelteFacts from './net/fetchSvelteFacts'
+	import fetchSvelteFacts from './http/fetchSvelteFacts'
 
 	onMount(async () => {
 		const facts = await fetchSvelteFacts()
@@ -35,12 +35,23 @@
 		grid-template-areas: 
 			'title title'
 			'pros cons';
-		grid-template-rows: minmax(0, 100px) minmax(0, calc(100vh - 100px));
-		grid-template-columns: 1fr 1fr;
+		grid-template-rows: minmax(0, 70px) minmax(0, calc(100vh - 100px));
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	}
+
+	@media (max-width: 400px) {
+		main {
+			grid-template-areas: 
+			'title'
+			'pros'
+			'cons';
+			grid-template-rows: minmax(0, 70px)  minmax(0, calc(100vh - 100px)) minmax(0, calc(100vh - 100px));
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+
 	img {
-		height: 250px;
-		display: inline-block;
+		max-width: 125%;
 	}
 </style>
 
@@ -60,9 +71,9 @@
 
 	<GridArea gridArea="title">
 		<Card>
-			<FlexRow margin="-150px 0 0 0" height="400px" alignItems="center" justifyContent="center">
+			<FlexRow margin="-114px 0 0 0" height="300px" classNames="responsive" alignItems="center" justifyContent="center">
 				<img
-					src={"assets/svelte-logo.svg"}
+					src={"assets/svelte-logo.png"}
 					alt="Svelte Logo"
 				/>
 			</FlexRow>
@@ -71,7 +82,7 @@
 
 	<GridArea gridArea="pros">
 		<Widget
-			title="Svelte Pros"
+			title="Pros"
 			actionIcons={[
 				{
 					icon: PlusIcon,
@@ -93,7 +104,7 @@
 
 	<GridArea gridArea="cons">
 		<Widget
-			title="Svelte Cons"
+			title="Cons"
 			actionIcons={[
 				{
 					icon: PlusIcon,

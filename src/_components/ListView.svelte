@@ -21,9 +21,13 @@
   li:last-of-type {
     border-bottom: 0;
   }
+  strong {
+    word-break: break-word;
+  }
   p {
     line-height: var(--textbody-line-height);
     margin: 10px 0;
+    word-break: break-word;
   }
   span {
     position: absolute;
