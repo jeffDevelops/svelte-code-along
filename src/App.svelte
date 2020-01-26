@@ -39,7 +39,7 @@
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	}
 
-	@media (max-width: 400px) {
+	@media (max-width: 550px) {
 		main {
 			grid-template-areas: 
 			'title'
