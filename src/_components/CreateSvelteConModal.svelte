@@ -11,7 +11,7 @@
   let type = 'PRO'
 
   const submitForm = async () => {
-    await createSvelteFact({ title, description, type })
+    await createSvelteFact({ title, description, type: 'CON' })
     emitCloseAction()
   }
 </script>
